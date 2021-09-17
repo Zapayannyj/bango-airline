@@ -1,0 +1,19 @@
+{% extends "flights/layout.html" %}
+
+{% block body%}
+    <h1>Рейс {{flight.id}}</h1>
+    
+    <ul>
+        <li>Отправление: {{flight.origin}}</li>
+        <li>Прибытие: {{flight.destination}}</li>
+        <li>Время полёта: {{flight.duration}}</li>
+    </ul>
+
+    <h2>
+        {% for passengers in flight %}
+            <li>{{ passenger }}</li>
+        {% empty %}
+            <li>Пока нет пассажиров</li>
+        {% endfor %}
+    </h2>
+{% endblock %}

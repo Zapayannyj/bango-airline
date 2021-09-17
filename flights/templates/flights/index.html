@@ -1,0 +1,11 @@
+{% extends "flights/layout.html"%}
+
+{% block body%}
+    <h1>Полёты:</h1>
+    <ul>
+        {% for flight in flights %}
+        <li>Рейсы: {{ flight.id }} {{ flight.origin }} {{ flight.duration }}</li>
+        {%endfor%}
+    </ul>
+
+{% endblock %}
