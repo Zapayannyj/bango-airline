@@ -4,7 +4,13 @@
     <h1>Полёты:</h1>
     <ul>
         {% for flight in flights %}
-        <li>Рейсы: {{ flight.id }} {{ flight.origin }} {{ flight.duration }}</li>
+            
+            <li>
+                <a href="{% url 'flight' flight.id %}">
+                Рейс N.{{ flight.id }} Отправление с: "{{ flight.origin }}" Прибытие в: "{{ flight.destination }}" *Время Полета: {{ flight.duration }}
+                </a>
+            </li>
+
         {%endfor%}
     </ul>
 

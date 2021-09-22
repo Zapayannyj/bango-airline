@@ -9,11 +9,28 @@
         <li>Время полёта: {{flight.duration}}</li>
     </ul>
 
-    <h2>
-        {% for passengers in flight %}
-            <li>{{ passenger }}</li>
-        {% empty %}
-            <li>Пока нет пассажиров</li>
-        {% endfor %}
-    </h2>
+    
+    <ul>
+        <h2>Пассажиры:</h2>
+                {% for passenger in passengers %}
+                    <li>{{ passenger }}</li>
+                {% empty %}
+                    <li>Пока нет пассажиров</li>
+                {% endfor %}
+    </ul>
+
+    <h2>Add Pass</h2>
+
+    <form action="{% url 'book' flight.id %}" method="POST">
+        {% csrf_token %}
+        <select name="passenger">
+            {% for passenger in non_passengers %}
+                <option value="{{ passenger.id }}">{{ passenger }}</option>
+            {%endfor%}
+        </select>
+        <input type="submit">
+    </form>
+
+    <a href="{% url 'index' %}">Назад к полетам</a>
+
 {% endblock %}
